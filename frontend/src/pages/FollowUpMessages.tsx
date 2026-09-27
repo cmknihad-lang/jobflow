@@ -157,7 +157,7 @@ export default function FollowUpMessages() {
 
   return (
     <div className="space-y-6 fade-in-up">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="font-serif text-3xl font-semibold tracking-tight text-text-primary">
             Follow-up Messages
@@ -168,7 +168,7 @@ export default function FollowUpMessages() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-3">
         {/* Template Selection */}
         <div className="lg:col-span-1 space-y-4">
           <div className="card">

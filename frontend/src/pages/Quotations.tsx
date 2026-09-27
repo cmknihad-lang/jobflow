@@ -149,7 +149,7 @@ export default function Quotations() {
 
   return (
     <div className="space-y-6 fade-in-up">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="font-serif text-3xl font-semibold tracking-tight text-text-primary">
             Quotations
@@ -160,7 +160,7 @@ export default function Quotations() {
         </div>
         <button
           onClick={() => { resetForm(); setShowModal(true); }}
-          className="btn-primary flex items-center"
+          className="btn-primary flex items-center justify-center sm:justify-start"
         >
           <Plus className="h-5 w-5 mr-2" />
           New Quotation
@@ -317,7 +317,7 @@ export default function Quotations() {
 
                 <div className="space-y-3 bg-surface border border-border rounded-sm p-4">
                   {formData.items.map((item, idx) => (
-                    <div key={idx} className="flex gap-3 items-start">
+                    <div key={idx} className="flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-3">
                       <input
                         type="text"
                         placeholder="Description"
@@ -326,38 +326,40 @@ export default function Quotations() {
                         className="input-field flex-1 text-sm"
                         required
                       />
-                      <input
-                        type="number"
-                        placeholder="Qty"
-                        value={item.quantity}
-                        onChange={(e) => handleItemChange(idx, 'quantity', parseFloat(e.target.value) || 0)}
-                        className="input-field w-16 text-sm"
-                        step="0.01"
-                        min="0"
-                        required
-                      />
-                      <input
-                        type="number"
-                        placeholder="Price"
-                        value={item.unit_price}
-                        onChange={(e) => handleItemChange(idx, 'unit_price', parseFloat(e.target.value) || 0)}
-                        className="input-field w-24 text-sm"
-                        step="0.01"
-                        min="0"
-                        required
-                      />
-                      <div className="w-20 text-right text-sm font-medium text-text-primary pt-2">
-                        ₹{(item.quantity * item.unit_price).toLocaleString('en-IN', { maximumFractionDigits: 2 })}
+                      <div className="flex gap-2 sm:gap-3 items-start">
+                        <input
+                          type="number"
+                          placeholder="Qty"
+                          value={item.quantity}
+                          onChange={(e) => handleItemChange(idx, 'quantity', parseFloat(e.target.value) || 0)}
+                          className="input-field w-20 text-sm"
+                          step="0.01"
+                          min="0"
+                          required
+                        />
+                        <input
+                          type="number"
+                          placeholder="Price"
+                          value={item.unit_price}
+                          onChange={(e) => handleItemChange(idx, 'unit_price', parseFloat(e.target.value) || 0)}
+                          className="input-field w-28 text-sm"
+                          step="0.01"
+                          min="0"
+                          required
+                        />
+                        <div className="flex-1 sm:w-20 text-right text-sm font-medium text-text-primary pt-2 whitespace-nowrap">
+                          ₹{(item.quantity * item.unit_price).toLocaleString('en-IN', { maximumFractionDigits: 2 })}
+                        </div>
+                        {formData.items.length > 1 && (
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveItem(idx)}
+                            className="p-2 text-text-secondary hover:text-accent-red hover:bg-accent-red-bg rounded-sm"
+                          >
+                            ×
+                          </button>
+                        )}
                       </div>
-                      {formData.items.length > 1 && (
-                        <button
-                          type="button"
-                          onClick={() => handleRemoveItem(idx)}
-                          className="p-2 text-text-secondary hover:text-accent-red hover:bg-accent-red-bg rounded-sm"
-                        >
-                          ×
-                        </button>
-                      )}
                     </div>
                   ))}
                 </div>

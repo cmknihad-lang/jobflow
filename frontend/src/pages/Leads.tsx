@@ -175,7 +175,7 @@ export default function Leads() {
 
   return (
     <div className="space-y-6 fade-in-up">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="font-serif text-3xl font-semibold tracking-tight text-text-primary">
             Leads
@@ -184,17 +184,17 @@ export default function Leads() {
             Manage your sales pipeline and convert opportunities into jobs.
           </p>
         </div>
-        <div className="flex space-x-3">
+        <div className="flex gap-2 flex-wrap">
           <button
             onClick={() => { setShowAIModal(true); setAiResult(null); }}
-            className="btn-secondary flex items-center"
+            className="btn-secondary flex items-center flex-1 sm:flex-none justify-center"
           >
             <Sparkles className="h-5 w-5 mr-2" />
             AI Extract
           </button>
           <button
             onClick={() => { resetForm(); setShowModal(true); }}
-            className="btn-primary flex items-center"
+            className="btn-primary flex items-center flex-1 sm:flex-none justify-center"
           >
             <Plus className="h-5 w-5 mr-2" />
             Add Lead

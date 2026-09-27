@@ -9,6 +9,7 @@ import {
   Settings,
   LogOut,
   MessageSquare,
+  X,
 } from 'lucide-react';
 import clsx from 'clsx';
 
@@ -22,20 +23,29 @@ const navigation = [
   { name: 'Messages',   href: '/messages',   icon: MessageSquare },
 ];
 
-export default function Sidebar() {
+interface SidebarProps {
+  onClose?: () => void;
+}
+
+export default function Sidebar({ onClose }: SidebarProps) {
   const location = useLocation();
   const navigate = useNavigate();
 
   const handleSignOut = () => {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
+    if (onClose) onClose();
     navigate('/login');
+  };
+
+  const handleNavClick = () => {
+    if (onClose) onClose();
   };
 
   return (
     <aside className="flex h-screen w-60 flex-col bg-sidebar flex-shrink-0">
       {/* Brand */}
-      <div className="flex h-14 items-center px-5 border-b border-white/[0.06]">
+      <div className="flex h-14 items-center justify-between px-5 border-b border-white/[0.06]">
         <div className="flex items-center gap-2.5">
           <div className="h-6 w-6 rounded bg-accent flex items-center justify-center flex-shrink-0">
             <Briefcase className="h-3.5 w-3.5 text-white" />
@@ -44,6 +54,15 @@ export default function Sidebar() {
             JobFlow
           </span>
         </div>
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="md:hidden p-1 rounded text-sidebar-text hover:text-white hover:bg-sidebar-hover transition-colors"
+            aria-label="Close menu"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        )}
       </div>
 
       {/* Nav */}
@@ -60,6 +79,7 @@ export default function Sidebar() {
             <Link
               key={item.name}
               to={item.href}
+              onClick={handleNavClick}
               className={clsx(
                 'flex items-center gap-3 px-2.5 py-2 rounded-sm text-xs font-medium transition-colors duration-150',
                 isActive
@@ -81,6 +101,7 @@ export default function Sidebar() {
       <div className="border-t border-white/[0.06] px-3 py-3 space-y-0.5">
         <Link
           to="/settings"
+          onClick={handleNavClick}
           className={clsx(
             'flex items-center gap-3 px-2.5 py-2 rounded-sm text-xs font-medium transition-colors duration-150',
             location.pathname === '/settings'

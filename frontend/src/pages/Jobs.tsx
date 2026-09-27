@@ -146,7 +146,7 @@ export default function Jobs() {
 
   return (
     <div className="space-y-6 fade-in-up">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="font-serif text-3xl font-semibold tracking-tight text-text-primary">
             Jobs
@@ -157,7 +157,7 @@ export default function Jobs() {
         </div>
         <button
           onClick={() => { resetForm(); setShowModal(true); }}
-          className="btn-primary flex items-center"
+          className="btn-primary flex items-center justify-center sm:justify-start"
         >
           <Plus className="h-5 w-5 mr-2" />
           New Job
