@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Plus, Search, Edit, Trash2, Download, Send, CheckCircle, XCircle, FileText } from 'lucide-react';
+import { Plus, Search, Trash2, Download, FileText } from 'lucide-react';
 import api from '../lib/axios';
 import type { Quotation, Lead } from '../types';
 
@@ -119,7 +119,7 @@ export default function Quotations() {
     }
   };
 
-  const handleGeneratePDF = (quotation: Quotation) => {
+  const handleGeneratePDF = (_quotation: Quotation) => {
     // Placeholder for PDF generation
     alert('PDF export coming soon. For now, use print-to-PDF in your browser.');
   };

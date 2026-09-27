@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Plus, Search, Edit, Trash2, User, MapPin, Calendar, FileText, Briefcase, Sparkles } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, User, MapPin, Calendar, FileText, Sparkles } from 'lucide-react';
 import api from '../lib/axios';
 import type { Lead, Customer } from '../types';
 
