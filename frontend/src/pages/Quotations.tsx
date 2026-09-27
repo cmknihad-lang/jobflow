@@ -219,7 +219,7 @@ export default function Quotations() {
                         <div key={idx} className="flex justify-between text-xs text-text-secondary">
                           <span>{item.description}</span>
                           <span>
-                            {item.quantity} × ₹{parseFloat(item.unit_price).toLocaleString('en-IN')} = ₹{parseFloat(item.total_price).toLocaleString('en-IN')}
+                            {item.quantity} × ₹{item.unit_price.toLocaleString('en-IN')} = ₹{(item.quantity * item.unit_price).toLocaleString('en-IN')}
                           </span>
                         </div>
                       ))}
